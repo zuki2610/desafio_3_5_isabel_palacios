@@ -1,50 +1,50 @@
 const inicializarFecha = () => { 
   const fecha = new Date();
-const day = fecha.getDay();
+  const day = fecha.getDay();
 
-let lunes = '';
-let martes = '';
-let miercoles = '';
-let jueves = '';
-let viernes = '';
+  let lunes = '';
+  let martes = '';
+  let miercoles = '';
+  let jueves = '';
+  let viernes = '';
 
-if (day == 1) {
-  lunes =   `Lunes ${fecha.getDate()}`;
-  martes = `Martes ${fecha.getDate() + 1}`;
-  miercoles = `Miercoles ${fecha.getDate() + 2 }`;
-  jueves = `Jueves ${fecha.getDate() + 3}`;
-  viernes = `Viernes ${fecha.getDate() + 4}`;
-} else if (day == 2) {
-  lunes = `Lunes ${fecha.getDate() - 1}`;
-  martes = `Martes ${fecha.getDate()}`;
-  miercoles = `Miercoles ${fecha.getDate() + 1 }`;
-  jueves = `Jueves ${fecha.getDate() + 2}`;
-  viernes = `Viernes ${fecha.getDate() + 3}`;
-} else if (day == 3) {
-  lunes = `Lunes ${fecha.getDate() - 2}`;
-  martes = `Martes ${fecha.getDate() - 1}`;
-  miercoles = `Miercoles ${fecha.getDate() }`;
-  jueves = `Jueves ${fecha.getDate() + 1}`;
-  viernes = `Viernes ${fecha.getDate() + 2}`;
-} else if (day == 4) {
-  lunes = `Lunes ${fecha.getDate() - 3}`;
-  martes = `Martes ${fecha.getDate() - 2}`;
-  miercoles = `Miercoles ${fecha.getDate() - 1 }`;
-  jueves = `Jueves ${fecha.getDate()}`;
-  viernes = `Viernes ${fecha.getDate() + 1}`;
-} else if (day == 5) {
-  lunes = `Lunes ${fecha.getDate() - 4}`;
-  martes = `Martes ${fecha.getDate() - 3}`;
-  miercoles = `Miercoles ${fecha.getDate() - 2 }`;
-  jueves = `Jueves ${fecha.getDate() - 1}`;
-  viernes = `Viernes ${fecha.getDate()}`;
-}
+  if (day == 1) {
+    lunes =   `Lunes ${fecha.getDate()}`;
+    martes = `Martes ${fecha.getDate() + 1}`;
+    miercoles = `Miercoles ${fecha.getDate() + 2 }`;
+    jueves = `Jueves ${fecha.getDate() + 3}`;
+    viernes = `Viernes ${fecha.getDate() + 4}`;
+  } else if (day == 2) {
+    lunes = `Lunes ${fecha.getDate() - 1}`;
+    martes = `Martes ${fecha.getDate()}`;
+    miercoles = `Miercoles ${fecha.getDate() + 1 }`;
+    jueves = `Jueves ${fecha.getDate() + 2}`;
+    viernes = `Viernes ${fecha.getDate() + 3}`;
+  } else if (day == 3) {
+    lunes = `Lunes ${fecha.getDate() - 2}`;
+    martes = `Martes ${fecha.getDate() - 1}`;
+    miercoles = `Miercoles ${fecha.getDate() }`;
+    jueves = `Jueves ${fecha.getDate() + 1}`;
+    viernes = `Viernes ${fecha.getDate() + 2}`;
+  } else if (day == 4) {
+    lunes = `Lunes ${fecha.getDate() - 3}`;
+    martes = `Martes ${fecha.getDate() - 2}`;
+    miercoles = `Miercoles ${fecha.getDate() - 1 }`;
+    jueves = `Jueves ${fecha.getDate()}`;
+    viernes = `Viernes ${fecha.getDate() + 1}`;
+  } else if (day == 5) {
+    lunes = `Lunes ${fecha.getDate() - 4}`;
+    martes = `Martes ${fecha.getDate() - 3}`;
+    miercoles = `Miercoles ${fecha.getDate() - 2 }`;
+    jueves = `Jueves ${fecha.getDate() - 1}`;
+    viernes = `Viernes ${fecha.getDate()}`;
+  }
 
-document.getElementById("p-lunes").innerHTML = lunes;
-document.getElementById("p-martes").innerHTML = martes;
-document.getElementById("p-miercoles").innerHTML = miercoles;
-document.getElementById("p-jueves").innerHTML = jueves;
-document.getElementById("p-viernes").innerHTML = viernes;
+  document.getElementById("p-lunes").innerHTML = lunes;
+  document.getElementById("p-martes").innerHTML = martes;
+  document.getElementById("p-miercoles").innerHTML = miercoles;
+  document.getElementById("p-jueves").innerHTML = jueves;
+  document.getElementById("p-viernes").innerHTML = viernes;
 }
 
 let showInput = true;
@@ -91,11 +91,8 @@ const validateInput = (event, dia) => {
     }
   }
 };
-const eliminar = (id) => {
-  console.log(id);
-  const idEliminar = document.getElementById(id);
-  idEliminar.remove();
-}
+
+const eliminar = (id) => document.getElementById(id).remove();
 
 const contadorPorDia = (dia) => {
   if (dia == 'lunes') {
