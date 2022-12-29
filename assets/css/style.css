@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
-
+body {
+    background-image: url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 .title {
     font-family: 'Pacifico', cursive;
     color: rgb(233, 180, 247);
@@ -83,19 +88,4 @@ input {
 .sumaresta {
     display: flex;
     flex-direction: column;
-}
-
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.content {
-    position: fixed;
-    color: #f1f1f1;
-    width: 100%;
-
 }
