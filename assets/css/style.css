@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+    background-image: url(/assets/img/bg.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.title {
+    font-family: 'Pacifico', cursive;
+    color: rgb(233, 180, 247);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vh;
+    line-height: 30px;
+}
+
+.week {
+    font-family: 'Pacifico', cursive;
+    color: rgb(233, 180, 247);
+    text-align: center;
+    font-size: 32px;
+    padding-top: 2vh;
+    text-align: center;
+    border-bottom: 2px solid rgb(224, 169, 178);
+}
+
+.container {
+    border: 3px solid rgb(224, 169, 178);
+    border-radius: 2rem;
+    box-shadow: 0 0 95px gray;
+    margin-top: 7vh;
+    padding: 4.5vh;
+
+}
+
+i {
+    font-size: 32px;
+    text-align: center;
+
+}
+
+.tarea {
+    font-family: 'Pacifico', cursive;
+    color: rgb(233, 180, 247);
+    text-align: center;
+    font-size: 32px;
+    text-align: center;
+    border-bottom: 2px solid rgb(224, 169, 178);
+}
+
+.task {
+    font-family: 'Pacifico', cursive;
+    color: rgb(233, 180, 247);
+    text-align: center;
+    font-size: 32px;
+    text-align: center;
+}
+
+input {
+    color: rgb(233, 180, 247);
+    text-align: center;
+    font-size: 14px;
+    text-align: center;
+    width: 12vw;
+    display:none;
+   
+}
+.display {
+    display: block;
+    width: 12vw;
+}
+.añadido {
+    color: rgb(233, 180, 247);
+    text-align: center;
+    font-size: 20px;
+    padding-top: 1vh;
+    text-align: center;
+    width: 12vw;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+}
+.sumaresta {
+    display: flex;
+    flex-direction: column;
+}
