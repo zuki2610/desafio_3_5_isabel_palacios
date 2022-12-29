@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
-* {
-    background-image: url(/assets/img/bg.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
 .title {
     font-family: 'Pacifico', cursive;
     color: rgb(233, 180, 247);
@@ -67,13 +60,15 @@ input {
     font-size: 14px;
     text-align: center;
     width: 12vw;
-    display:none;
-   
+    display: none;
+
 }
+
 .display {
     display: block;
     width: 12vw;
 }
+
 .añadido {
     color: rgb(233, 180, 247);
     text-align: center;
@@ -84,7 +79,23 @@ input {
     font-family: 'Kanit', sans-serif;
     display: flex;
 }
+
 .sumaresta {
     display: flex;
     flex-direction: column;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.content {
+    position: fixed;
+    color: #f1f1f1;
+    width: 100%;
+
 }
