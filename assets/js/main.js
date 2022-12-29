@@ -80,7 +80,7 @@ const validateInput = (event, dia) => {
         tareaactual + `<div class="añadido" id="eliminar-${dia}-${cantidadTareas}">
           <span>${input}</span>
           <p class="sumaresta">
-            <span onclick="eliminar('eliminar-${dia}-${cantidadTareas}')" class="btn">
+            <span onclick="eliminar('eliminar-${dia}-${cantidadTareas}', '${dia}')" class="btn">
                 <i class="fa-solid fa-circle-minus" style="color:rgb(240, 116, 116)"></i>
             </span>
             <span onclick="editar()" class="btn">
@@ -92,7 +92,12 @@ const validateInput = (event, dia) => {
   }
 };
 
-const eliminar = (id) => document.getElementById(id).remove();
+const eliminar = (id, dia) => {
+  console.log(id);
+  const idEliminar = document.getElementById(id);
+  idEliminar.remove();
+  document.getElementById(`input-task-${dia}`).style.display = "none";
+}
 
 const contadorPorDia = (dia) => {
   if (dia == 'lunes') {
