@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Arreglos y Objetos en Javascript</title>
-        <link rel="stylesheet" href="./assets/css/style.css">
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/7862911cd4.js" crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <div class="title">
-                <h1>Planner para Isabel Palacios</h1>
-                <h2>Welcome to the madness</h2>
-                <h3 id="contador-tareas-registradas"></h3>
-                <h3 id="contador-tareas-completadas"></h3>
-            </div>
-        </header>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arreglos y Objetos en Javascript</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7862911cd4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h1>Planner para Isabel Palacios</h1>
+            <h2>Welcome to the madness</h2>
+
+        </div>
+    </header>
+    <section>
         <div class="container text-center">
             <div class="row ms-1">
                 <div class="col week">
@@ -47,62 +49,94 @@
                     <div class="row ps-1 ">
                         <div class="col">
                             <div id="lunes" class="display">
-                            </div>     
-                                <label for="task"></label>
-                                <input type="text" name="task" id="input-task-lunes" onkeypress="agregarTareaPorDia(event, 'lunes')">
-                                <span onclick="mostrarInputPorDia('lunes')" class="btn">
+                            </div>
+                            <label for="task"></label>
+                            <input type="text" name="task" id="input-task-lunes"
+                                onkeypress="agregarTareaPorDia(event, 'lunes')">
+                            <span onclick="mostrarInputPorDia('lunes')" class="btn">
                                 <i class="fa-solid fa-circle-plus" style="color:pink"></i>
                             </span>
                         </div>
 
                         <div class="col">
                             <div id="martes" class="display">
-                            </div>     
-                                <label for="task"></label>
-                                <input type="text" name="task" id="input-task-martes" onkeypress="agregarTareaPorDia(event, 'martes')">
-                                <span onclick="mostrarInputPorDia('martes')" class="btn">
+                            </div>
+                            <label for="task"></label>
+                            <input type="text" name="task" id="input-task-martes"
+                                onkeypress="agregarTareaPorDia(event, 'martes')">
+                            <span onclick="mostrarInputPorDia('martes')" class="btn">
                                 <i class="fa-solid fa-circle-plus" style="color:pink"></i>
                             </span>
                         </div>
 
                         <div class="col">
                             <div id="miercoles" class="display">
-                            </div>     
-                                <label for="task"></label>
-                                <input type="text" name="task" id="input-task-miercoles" onkeypress="agregarTareaPorDia(event, 'miercoles')">
-                                <span onclick="mostrarInputPorDia('miercoles')" class="btn">
+                            </div>
+                            <label for="task"></label>
+                            <input type="text" name="task" id="input-task-miercoles"
+                                onkeypress="agregarTareaPorDia(event, 'miercoles')">
+                            <span onclick="mostrarInputPorDia('miercoles')" class="btn">
                                 <i class="fa-solid fa-circle-plus" style="color:pink"></i>
                             </span>
                         </div>
 
                         <div class="col">
                             <div id="jueves" class="display">
-                            </div>     
-                                <label for="task"></label>
-                                <input type="text" name="task" id="input-task-jueves" onkeypress="agregarTareaPorDia(event, 'jueves')">
-                                <span onclick="mostrarInputPorDia('jueves')" class="btn">
+                            </div>
+                            <label for="task"></label>
+                            <input type="text" name="task" id="input-task-jueves"
+                                onkeypress="agregarTareaPorDia(event, 'jueves')">
+                            <span onclick="mostrarInputPorDia('jueves')" class="btn">
                                 <i class="fa-solid fa-circle-plus" style="color:pink"></i>
                             </span>
                         </div>
 
                         <div class="col">
                             <div id="viernes" class="display">
-                            </div>     
-                                <label for="task"></label>
-                                <input type="text" name="task" id="input-task-viernes" onkeypress="agregarTareaPorDia(event, 'viernes')">
-                                <span onclick="mostrarInputPorDia('viernes')" class="btn">
+                            </div>
+                            <label for="task"></label>
+                            <input type="text" name="task" id="input-task-viernes"
+                                onkeypress="agregarTareaPorDia(event, 'viernes')">
+                            <span onclick="mostrarInputPorDia('viernes')" class="btn">
                                 <i class="fa-solid fa-circle-plus" style="color:pink"></i>
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- link javascript -->
-            <script src="./assets/js/main.js"></script>
-            <!-- JavaScript Bundle with Popper -->
+    </section>
+    <section class="text-center">
+        <div class="container text-center">
+            <div class=" week2">
+                <h2>Monitor de tareas semanales:</h2>
+            </div>
+            <div class="task2 ms-4">
+                <h4 id="contador-tareas-registradas" class="mt-4"></h4>
+                <h4 id="contador-tareas-completadas"></h4>
+                <h4 id="contador-tareas-pendientes"></h4>
+                <h4 id="contador-tareas-proceso"></h4>
+            </div>
+            <div class="week2">
+                <h2 class="pt-4">Guía de uso:</h2>
+            </div>
+            <div class="task2 ms-4">
+                <h4 class="mt-4">El botón <i class="fa-solid fa-circle-plus" style="color:pink"></i> sirve para agregar una tarea</h4>
+                <h4> Al completar la tarea se guardará presionando la tecla "ENTER"</h4>
+                <h4>El botón <i class="fa-solid fa-circle-minus" style="color:rgb(240, 116, 116)"></i> eliminará
+                    una tarea de tu pizarra </h4>
+                <h4>El botón <i class="fa-solid fa-circle-plus" style="color:rgb(192, 227, 255)"></i> cambiará el estado
+                    de tu tarea</h4>
+            </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-                crossorigin="anonymous"></script>
-    </body>
+        </div>
+    </section>
+    <!-- link javascript -->
+    <script src="./assets/js/main.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

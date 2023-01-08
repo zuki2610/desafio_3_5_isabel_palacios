@@ -6,8 +6,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 100%;
 }
+
 .title {
     font-family: 'Pacifico', cursive;
     color: rgb(233, 180, 247);
@@ -19,14 +20,45 @@ body {
     line-height: 30px;
 }
 
+.undertitle {
+    font-family: 'Pacifico', cursive;
+    color: rgb(248, 223, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 5vh;
+    line-height: 30px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 5vh;
+    line-height: 30px;
+}
+
 .week {
     font-family: 'Pacifico', cursive;
     color: rgb(233, 180, 247);
-    text-align: center;
+    text-align: start;
     font-size: 32px;
     padding-top: 2vh;
     text-align: center;
     border-bottom: 2px solid rgb(224, 169, 178);
+}
+
+.week2 {
+    font-family: 'Pacifico', cursive;
+    color: rgb(243, 221, 249);
+    font-size: 32px;
+    padding-top: 1vh;
+    border-bottom: 2px solid rgb(237, 208, 213);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 30px;
 }
 
 .container {
@@ -55,10 +87,19 @@ i {
 
 .task {
     font-family: 'Pacifico', cursive;
-    color: rgb(233, 180, 247);
+    color: rgb(238, 211, 246);
     text-align: center;
     font-size: 32px;
     text-align: center;
+}
+
+.task2 {
+    font-family: 'manrope', sans-serif;
+    color: rgba(254, 218, 249, 0.985);
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 input {

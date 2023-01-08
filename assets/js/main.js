@@ -28,13 +28,13 @@ const generarCssDinamico = (tareas) => {
     if (tarea.estatus == estatus[0]) { //por hacer
       colorEstatus = 'red'
     } else if (tarea.estatus == estatus[1]) { // en curso
-      colorEstatus = 'yellow'
+      colorEstatus = 'orange'
     } else if (tarea.estatus == estatus[2]) { // completado
       colorEstatus = 'green'
     }
   
     document.getElementById(identificadorEstatus).style.backgroundColor = colorEstatus;
-    document.getElementById(identificadorEstatus).style.height = '17px';
+    document.getElementById(identificadorEstatus).style.height = '20px';
   });
 };
 
@@ -88,12 +88,18 @@ const inicializarTareasPredeterminadas = () => {
 
 const inicializarOactualizarCantidadTareasCompletadas = () => {
   let tareasCompletadas = 0;
+  let tareasPorHacer = 0;
+  let tareasEnCurso = 0;
   
   if (tareas.length > 0 ) {
     tareasCompletadas = tareas.filter(item => item.estatus == estatus[2]).length;
+    tareasPorHacer = tareas.filter(item => item.estatus == estatus[0]).length;
+    tareasEnCurso = tareas.filter(item => item.estatus == estatus[1]).length;
   }
 
   document.getElementById('contador-tareas-completadas').innerHTML = `Tareas completadas: ${tareasCompletadas}`;
+  document.getElementById('contador-tareas-pendientes').innerHTML = `Tareas por hacer: ${tareasPorHacer}`;
+  document.getElementById('contador-tareas-proceso').innerHTML = `Tareas en curso: ${tareasEnCurso}`;
 }
 
 const inicializarFecha = () => { 
