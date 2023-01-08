@@ -20,8 +20,8 @@ let contadorDeTodosLosEstatus = 0;
 let tareas = [];
 
 const generarCssDinamico = (tareas) => {
-  tareas.forEach((tarea, index) => {
-    const identificadorEstatus = `estatus-tarea-${index+1}`;
+  tareas.forEach(tarea => {
+    const identificadorEstatus = `estatus-tarea-${tarea.id.split('-')[2]}`;
     console.log(identificadorEstatus);
     let colorEstatus = '';
   
