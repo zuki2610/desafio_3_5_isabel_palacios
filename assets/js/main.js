@@ -1,3 +1,5 @@
+const estatus = ['por hacer', 'en curso', 'completado'];
+
 const tareasPorDia = {
   'lunes': 0,
   'martes': 0,
@@ -17,11 +19,57 @@ const mostrarInput = {
 let contadorDeTodosLosEstatus = 0;
 let tareas = [];
 
+const generarHtml = (contador, identificadorDiv, texto, dia, estatus) => {
+  return `<div class="tarea" id="${identificadorDiv}">
+    <span>${contador} - ${texto}</span>
+    <p id="estatus-tarea-${contador}"> Estatus: ${estatus}</p>
+    <p class="acciones">
+      <span onclick="eliminar('${identificadorDiv}', '${dia}')" class="btn">
+        <i class="fa-solid fa-circle-minus" style="color:rgb(240, 116, 116)"></i>
+      </span>
+      <span onclick="actualizarTareasPorEstatus('${identificadorDiv}')" class="btn">
+        <i class="fa-solid fa-circle-plus" style="color:rgb(192, 227, 255)"></i>
+      </span>
+    </p>
+  </div>`;
+}
+
+const inicializarTareasPredeterminadas = () => {
+  const dia = 'lunes';
+
+  tareas = [
+    {
+      id: 'div-lunes-1',
+      texto: 'Pasear a princesa',
+      estatus: estatus[0],
+    },
+    {
+      id: 'div-lunes-2',
+      texto: 'Asistir a desafio latam',
+      estatus: estatus[0],
+    },
+    {
+      id: 'div-lunes-3',
+      texto: 'Practicar react',
+      estatus: estatus[0],
+    },
+  ];
+  
+  let tareasPredeterminadas = document.getElementById(dia).innerHTML;
+  tareasPorDia['lunes'] = tareas.length;
+  contadorDeTodosLosEstatus = tareas.length;
+  tareas.forEach((tarea, index) => {
+    tareasPredeterminadas += generarHtml(index+1, tarea.id, tarea.texto, dia, tarea.estatus);
+  });
+
+  document.getElementById(dia).innerHTML = tareasPredeterminadas;
+}
+
 const inicializarOactualizarCantidadTareasCompletadas = () => {
   let tareasCompletadas = 0;
   
   if (tareas.length > 0 ) {
-    tareasCompletadas = tareas.filter(item => item.estatus == 'completada').length;
+    tareasCompletadas = tareas.filter(item => item.estatus == estatus[2]).length;
   }
 
   document.getElementById('contador-tareas-completadas').innerHTML = `Tareas completadas: ${tareasCompletadas}`;
@@ -91,8 +139,7 @@ const inicializarContadorTareas = () => {
   document.getElementById('contador-tareas-registradas').innerHTML = `Tareas registradas: ${tareas.length}`;
 }
 
-const showBlock = (dia) => {
-  console.log("showBlock");
+const mostrarInputPorDia = (dia) => {
   if (mostrarInput[dia] == true) {
     document.getElementById(`input-task-${dia}`).style.display = "block";
     mostrarInput[dia] = false;
@@ -102,36 +149,25 @@ const showBlock = (dia) => {
   }
 };
 
-const validateInput = (event, dia) => {
+const agregarTareaPorDia = (event, dia) => {
   const inputId = `input-task-${dia}`;
-  let input = document.getElementById(inputId).value;
-  if (input != "") {
+  let texto = document.getElementById(inputId).value;
+  if (texto != "") {
     if (event.key === "Enter") {
       event.preventDefault();
       const tareasPorDia = contadorPorDia(dia);
       contadorDeTodosLosEstatus = contadorDeTodosLosEstatus + 1;
       
-      const tareaActual = document.getElementById(dia).innerHTML;
+      const tareasPreviasDelDia = document.getElementById(dia).innerHTML;
       const identificadorDiv = `div-${dia}-${tareasPorDia}`;
-      const identificadorSpan = `estatus-tarea-${contadorDeTodosLosEstatus}`
-      document.getElementById(dia).innerHTML = tareaActual + `<div class="añadido" id="${identificadorDiv}">
-          <span>${contadorDeTodosLosEstatus} - ${input}</span>
-          <p id="${identificadorSpan}">Estatus: por hacer</p>
-          <p class="sumaresta">
-            <span onclick="eliminar('${identificadorDiv}', '${dia}')" class="btn">
-                <i class="fa-solid fa-circle-minus" style="color:rgb(240, 116, 116)"></i>
-            </span>
-            <span onclick="actualizarTareasPorEstatus('${identificadorDiv}', '${identificadorSpan}')" class="btn">
-                <i class="fa-solid fa-circle-plus" style="color:rgb(192, 227, 255)"></i>
-            </span>
-          </p>
-        </div>`;
+      
+      document.getElementById(dia).innerHTML = tareasPreviasDelDia + generarHtml(contadorDeTodosLosEstatus, identificadorDiv, texto, dia, estatus[0]);
       
       tareas.push(
         {
           id: identificadorDiv,
-          estatus: 'por hacer',
-          texto: input
+          estatus: estatus[0],
+          texto: texto
         }
       );
 
@@ -159,12 +195,12 @@ const contadorPorDia = (dia) => {
 const actualizarTareasPorEstatus = (tareaId) => {
   tareas = tareas.map(item => {
     if(item.id == tareaId) {
-      if (item.estatus == 'por hacer') {
-        item.estatus = 'desarrollo';
-      } else if (item.estatus == 'desarrollo') {
-        item.estatus = 'completada';
-      } else if (item.estatus == 'completada') {
-        item.estatus = 'por hacer';
+      if (item.estatus == estatus[0]) { //por hacer
+        item.estatus = estatus[1]; // en curso
+      } else if (item.estatus == estatus[1]) { // en curso
+        item.estatus = estatus[2]; // completado
+      } else if (item.estatus == estatus[2]) { // completado
+        item.estatus = estatus[0]; // por hacer
       }
     }
     return item;
@@ -175,6 +211,7 @@ const actualizarTareasPorEstatus = (tareaId) => {
   return tareas;
 }
 
+inicializarTareasPredeterminadas();
 inicializarContadorTareas();
 inicializarFecha();
 inicializarOactualizarCantidadTareasCompletadas();
