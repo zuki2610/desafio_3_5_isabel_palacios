@@ -183,8 +183,8 @@ const agregarTareaPorDia = (event, dia) => {
     if (event.key === "Enter") {
       event.preventDefault();
       const tareasPorDia = contadorPorDia(dia);
-      contadorDeTodosLosEstatus = contadorDeTodosLosEstatus + 1;
-      
+      contadorDeTodosLosEstatus = tareas.length
+
       const tareasPreviasDelDia = document.getElementById(dia).innerHTML;
       const identificadorDiv = `div-${dia}-${tareasPorDia}`;
       
