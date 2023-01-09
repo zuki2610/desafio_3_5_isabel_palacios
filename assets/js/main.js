@@ -1,13 +1,5 @@
 const estatus = ['por hacer', 'en curso', 'completado'];
 
-const tareasPorDia = {
-  'lunes': 0,
-  'martes': 0,
-  'miercoles': 0,
-  'jueves': 0,
-  'viernes': 0,
-};
-
 const mostrarInput = {
   'lunes': true,
   'martes': true,
@@ -20,19 +12,20 @@ let contadorDeTodosLosEstatus = 0;
 let tareas = [];
 
 const generarCssDinamico = (tareas) => {
+
   tareas.forEach(tarea => {
     const identificadorEstatus = `estatus-tarea-${tarea.id.split('-')[2]}`;
-    console.log(identificadorEstatus);
+   
     let colorEstatus = '';
-  
     if (tarea.estatus == estatus[0]) { //por hacer
+      console.log(`linea 30 identificadorEstatus: ${identificadorEstatus}`);
       colorEstatus = 'red'
     } else if (tarea.estatus == estatus[1]) { // en curso
       colorEstatus = 'orange'
     } else if (tarea.estatus == estatus[2]) { // completado
       colorEstatus = 'green'
     }
-  
+    console.log(`linea 37: ${identificadorEstatus}`)
     document.getElementById(identificadorEstatus).style.backgroundColor = colorEstatus;
     document.getElementById(identificadorEstatus).style.height = '20px';
   });
@@ -58,24 +51,26 @@ const inicializarTareasPredeterminadas = () => {
 
   tareas = [
     {
-      id: 'div-lunes-1',
+      id: 'div-tarea-1',
       texto: 'Pasear a princesa',
       estatus: estatus[0],
+      dia
     },
     {
-      id: 'div-lunes-2',
+      id: 'div-tarea-2',
       texto: 'Asistir a desafio latam',
       estatus: estatus[0],
+      dia
     },
     {
-      id: 'div-lunes-3',
+      id: 'div-tarea-3',
       texto: 'Practicar react',
       estatus: estatus[0],
+      dia
     },
   ];
   
   let tareasPredeterminadas = document.getElementById(dia).innerHTML;
-  tareasPorDia['lunes'] = tareas.length;
   contadorDeTodosLosEstatus = tareas.length;
   tareas.forEach((tarea, index) => {
     tareasPredeterminadas += generarHtml(index+1, tarea.id, tarea.texto, dia, tarea.estatus);
@@ -86,7 +81,7 @@ const inicializarTareasPredeterminadas = () => {
   generarCssDinamico(tareas);
 }
 
-const inicializarOactualizarCantidadTareasCompletadas = () => {
+const inicializarOactualizarCantidadTareasporEstatus = () => {
   let tareasCompletadas = 0;
   let tareasPorHacer = 0;
   let tareasEnCurso = 0;
@@ -182,27 +177,24 @@ const agregarTareaPorDia = (event, dia) => {
   if (texto != "") {
     if (event.key === "Enter") {
       event.preventDefault();
-      const tareasPorDia = contadorPorDia(dia);
-      contadorDeTodosLosEstatus = tareas.length
-
       const tareasPreviasDelDia = document.getElementById(dia).innerHTML;
-      const identificadorDiv = `div-${dia}-${tareasPorDia}`;
-      
-      document.getElementById(dia).innerHTML = tareasPreviasDelDia + generarHtml(contadorDeTodosLosEstatus, identificadorDiv, texto, dia, estatus[0]);
+      const identificadorDiv = `div-tarea-${tareas.length+1}`;
       
       tareas.push(
         {
           id: identificadorDiv,
           estatus: estatus[0],
-          texto: texto
+          texto,
+          dia
         }
       );
 
+      document.getElementById(dia).innerHTML = tareasPreviasDelDia + generarHtml(tareas.length, identificadorDiv, texto, dia, estatus[0]);
+      
       generarCssDinamico(tareas);
 
       //vaciamos el input para poder agregar otra tarea
       document.getElementById(inputId).value = "";
-      console.log(`tareas ${JSON.stringify(tareas)}`);
       document.getElementById('contador-tareas-registradas').innerHTML = `Tareas registradas: ${tareas.length}`;
     }
   }
@@ -212,16 +204,10 @@ const eliminar = (id, dia) => {
   document.getElementById(id).remove();
   //la funcion filter, nos permite devolver un nuevo arreglo sin el elemento que queremos dejar por fuera, para eso nos ayudamos con el id
   tareas = tareas.filter(item => item.id != id);
-  console.log(`tareas restantes ${JSON.stringify(tareas)}`);
   document.getElementById(`input-task-${dia}`).style.display = "none";
   document.getElementById('contador-tareas-registradas').innerHTML = `Tareas registradas: ${tareas.length}`;
-  inicializarOactualizarCantidadTareasCompletadas();
+  inicializarOactualizarCantidadTareasporEstatus();
 }
-
-const contadorPorDia = (dia) => {
-  tareasPorDia[dia] = tareasPorDia[dia] + 1;
-  return tareasPorDia[dia];
-};
 
 const actualizarTareasPorEstatus = (tareaId) => {
   tareas = tareas.map(item => {
@@ -238,7 +224,7 @@ const actualizarTareasPorEstatus = (tareaId) => {
   });
 
   generarCssDinamico(tareas);
-  inicializarOactualizarCantidadTareasCompletadas();
+  inicializarOactualizarCantidadTareasporEstatus();
   
   return tareas;
 }
@@ -246,4 +232,4 @@ const actualizarTareasPorEstatus = (tareaId) => {
 inicializarTareasPredeterminadas();
 inicializarContadorTareas();
 inicializarFecha();
-inicializarOactualizarCantidadTareasCompletadas();
+inicializarOactualizarCantidadTareasporEstatus();
